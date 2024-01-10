@@ -1,0 +1,7 @@
+ARG BASE_IMAGE="quay.io/mmartinv/bootc-kiosk-demo:fedora-eln"
+FROM ${BASE_IMAGE}
+COPY files/flatpak/ /
+RUN dnf -y install flatpak && dnf clean all
+RUN flatpak remote-add --installation=image --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && \
+    flatpak install --installation=image -y flathub org.gimp.GIMP
+RUN --mount=type=tmpfs,destination=/var ostree container commit

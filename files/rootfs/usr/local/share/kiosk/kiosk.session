@@ -1,0 +1,5 @@
+[User]
+Session=gnome-kiosk-script-xorg
+XSession=kiosk
+Icon=/var/lib/kiosk/.face
+SystemAccount=false
