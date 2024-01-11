@@ -3,11 +3,11 @@
 set -exo pipefail
 
 DISTRO="${DISTRO:-fedora-eln}"
+CONTAINER_IMAGE="${CONTAINER_IMAGE:-quay.io/mmartinv/bootc-kiosk-demo:${DISTRO}}"
+IMAGE_TYPE="${IMAGE_TYPE:-qcow2}"
 
 BLUEPRINT_FILE="/tmp/blueprint.json"
 OUTPUT_DIR="./images/${DISTRO}"
-
-IMAGE_TYPE="${IMAGE_TYPE:-qcow2}"
 
 mkdir -p "${OUTPUT_DIR}"
 
@@ -61,4 +61,4 @@ ${CONTAINER_CMD} run \
     "quay.io/centos-bootc/bootc-image-builder:latest" \
     --type "${IMAGE_TYPE}" \
     --config "/config.json" \
-    "quay.io/mmartinv/bootc-kiosk-demo:${DISTRO}"
+    "${CONTAINER_IMAGE}"
