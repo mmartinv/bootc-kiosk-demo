@@ -32,5 +32,5 @@ if [ -z "${OCI_RUNTIME_CMD}" ]; then
 fi
 
 sudo chown -R "${USER}" "${IMAGE_DIR}"
-#podman run --runtime "${OCI_RUNTIME_CMD}" --interactive --tty --rm quay.io/containerdisks/fedora:39 ""
-podman run --runtime "${OCI_RUNTIME_CMD}" --name "${DISTRO}" --interactive --tty --rm --rootfs "${IMAGE_DIR}" ""
+#podman run --runtime "${OCI_RUNTIME_CMD}" --name fedora-39-vm --interactive --tty --rm quay.io/containerdisks/fedora:39 ""
+podman run --runtime "${OCI_RUNTIME_CMD}" --name "${DISTRO}-vm" --interactive --tty --rm --rootfs "${IMAGE_DIR}" ""
