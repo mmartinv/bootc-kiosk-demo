@@ -15,7 +15,6 @@ TREE_DIR="${TREE_DIR:-/tmp/ostree}"
 [ -z "$(ls "${TREE_DIR}/ostree/deploy/default/deploy" 2>/dev/null)" ] || chattr -i ${TREE_DIR}/ostree/deploy/default/deploy/*
 rm -rf "${TREE_DIR}"
 mkdir -p "${TREE_DIR}"
-podman pull "${IMAGE}:${DISTRO}"
 ostree admin init-fs --modern "${TREE_DIR}" --sysroot="${TREE_DIR}"
 ostree admin os-init default --sysroot="${TREE_DIR}"
 ostree container image deploy --imgref="ostree-unverified-image:$IMAGE:$DISTRO" \
